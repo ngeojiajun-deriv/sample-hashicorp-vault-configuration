@@ -1,0 +1,13 @@
+version: '3'
+services:
+  vault:
+    image: hashicorp/vault
+    volumes:
+      - ./vault/config.d:/vault/config.d
+      - ./vault/data:/mnt/vault/data
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - 8080:8200
+    command: server -config=/vault/config.d/base.hcl
+      
